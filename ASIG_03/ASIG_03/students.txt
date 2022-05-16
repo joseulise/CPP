@@ -1,0 +1,6 @@
+1111 Mengano Mas Cual# 2 ARTE4036 3 A MATE3031 4 B 
+1313 jose# 1 ARTE4036 3 A 
+1414 jose ulises# 1 ARTE4036 3 A 
+2222 Pepito Perez# 1 ARTE4036 3 A 
+3333 Fulana de Tal# 3 ARTE4036 3 A MATE3031 4 B CONT4036 3 A 
+9999 carlos prieto# 1 ARTE4036 3 A 
