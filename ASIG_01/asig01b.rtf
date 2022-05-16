@@ -1,0 +1,259 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fprq1\fcharset0 Courier New;}{\f1\fswiss\fcharset0 Arial;}}
+{\colortbl ;\red0\green0\blue255;\red0\green128\blue0;}
+{\*\generator Msftedit 5.41.15.1507;}\viewkind4\uc1\pard\cf1\f0\fs20 #include\cf0  <iostream>\par
+\cf1 #include\cf0  <fstream>\par
+\cf1 #include\cf0  <iomanip>\par
+\cf1 #include\cf0  <cctype>\par
+\par
+\cf1 using\cf0  \cf1 namespace\cf0  std;\par
+\par
+\cf1 const\cf0  \cf1 int\cf0  COLS=6, ROWS=13;\par
+\par
+\cf1 void\cf0  readFile(\cf1 char\cf0  array[][COLS])\par
+\cf1 void\cf0  showMenu(\cf1 char\cf0  array[][COLS],)\par
+\cf1 void\cf0  reserveSeat(\cf1 char\cf0  array[][COLS])\par
+\cf1 void\cf0  cancelReserve(\cf1 char\cf0  array[][COLS])\par
+\cf1 void\cf0  showSeats(\cf1 char\cf0  array[][COLS])\par
+\cf1 void\cf0  updateFile(\cf1 const\cf0  array[][COLS], ofstream outputfile)\par
+\par
+\cf1 int\cf0  main()\par
+\{\par
+\tab\cf2 //int option;\par
+\cf0\tab\cf1 char\cf0  seatArray[ROWS][COLS];\par
+\tab\par
+\tab ofstream outfile;\par
+\par
+\tab\cf2 //infile.open("dist.txt)\par
+\cf0\tab\cf2 //outfile\par
+\par
+\cf0\tab readFile(seatArray[][COLS], infile);\par
+\par
+\tab\par
+\tab showMenu(seatArray[][COLS]);\par
+\tab updateFile(seatArray[][COLS], outfile);\par
+\par
+\tab\cf1 return\cf0  0;\par
+\}\cf2 //MAIN\par
+\par
+\cf1 void\cf0  readFile(\cf1 char\cf0  array[][COLS])\par
+\{\par
+\tab ifstream infile;\par
+\tab infile.open("dist.txt");\par
+\tab\cf1 if\cf0 (!infile)\par
+\tab\{\par
+\tab\tab cout<<"Error opening file!"<<endl;\par
+\tab\tab exit(1);\par
+\tab\}\par
+\tab\cf1 for\cf0 (\cf1 int\cf0  r = 0; r < ROWS; r++)\par
+\tab\{\par
+\tab\tab\cf1 for\cf0 (\cf1 int\cf0  c = 0; c < COLS; c++)\par
+\tab\tab\tab infile>>array[f][c];\par
+\tab\}\par
+\tab infile.close();\par
+\}\cf2 //VOID READFILE\par
+\par
+\cf1 void\cf0  showMenu(\cf1 char\cf0  array[][COLS])\par
+\{\par
+\tab\cf1 int\cf0  option;\par
+\tab\par
+\tab\cf1 do\cf0\{\par
+    \tab cout<<"Airline Menu:"<<endl<<endl;\par
+\tab\tab cout<<"1) Reserve seat/n"\par
+\tab\tab\tab <<"2) Cancel reservation/n"\par
+\tab\tab\tab <<"3) Show seats/n"\par
+\tab\tab\tab <<"4) Exit/n/n"\par
+\tab\tab\tab <<"Selection: ";\par
+\tab\tab cin>>option;\par
+\tab\tab\cf1 switch\cf0 (option)\par
+\tab\tab\{\par
+\tab\tab\cf1 case\cf0  1:\par
+\tab\tab\tab reserveSeat(array[][COLS]);\par
+\tab\tab\tab\cf1 break\cf0 ;\par
+\tab\tab\cf1 case\cf0  2:\par
+\tab\tab\tab cancelReserve(array[][COLS]);\par
+\tab\tab\tab\cf1 break\cf0 ;\par
+\tab\tab\cf1 case\cf0  3:\par
+\tab\tab\tab showSeats(array[][COLS]);\par
+\tab\tab\cf1 case\cf0  4:\par
+\tab\tab\tab\cf2 //cout\par
+\cf0\tab\tab\tab\cf1 break\cf0 ;\par
+\tab\tab\cf1 default\cf0 :\par
+\tab\tab\tab cout<<"Invalid option!!!"<<endl;\par
+\tab\tab\tab system("pause");\par
+\tab\tab\tab\cf2 //system("cls");\par
+\cf0\tab\tab\tab\cf1 break\cf0 ;\par
+\tab\tab\}\cf2 //SWITCH\par
+\cf0\tab\}\cf1 while\cf0 (option != 4)\par
+\}\cf2 //SHOWMENU\par
+\par
+\cf1 void\cf0  reserveSeat(\cf1 char\cf0  array[][COLS])\par
+\{\par
+\tab\cf1 char\cf0  section='C';\par
+\tab\cf1 int\cf0  tempRow=14;\par
+\tab\cf1 char\cf0  tempCol='G';\par
+\par
+\tab\cf1 while\cf0 (section!='A' || section!='B')\par
+\tab\{\par
+\tab\tab cout<<"Seat Reservoir"<<endl<<endl;\par
+\tab\tab cout<<"Select:"<<endl<<"A.First Class/nB.Economic Class"<<endl;\par
+\tab\tab cin>>section;\par
+\tab\tab section=toupper(section);\par
+\tab\}\cf2 //WHILE\par
+\cf0\tab\tab\par
+\tab\tab\cf1 if\cf0 (section='A')\par
+\tab\tab\{\par
+\tab\tab\tab\cf1 while\cf0 ((tempRow!='A' && tempRow!='B' && tempRow!='C' && tempRow!='D' && tempRow!='E' && tempRow!='F')\par
+\tab\tab\tab || (tempCol<1 || tempCol>13))\par
+\tab\tab\tab\{\par
+\tab\tab\tab\tab\cf2 //system("cls");\par
+\cf0\tab\tab\tab\tab cout<<"First Class"<<endl<<"No Smoking Area"<<endl<<endl;\par
+\tab\tab\tab\tab cout<<"ROWS 1 & 2"<<"COLUMNS A to F"<<endl;\par
+\tab\tab\tab\tab cout<<"Enter your desired seat ROW letter and COLUMN number: ";\par
+\tab\tab\tab\tab cin>>tempRow>>tempCol;\par
+\tab\tab\tab\tab tempRow=toupper(tempRow);\par
+\tab\tab\tab\tab\cf1 if\cf0 (tempRow!='A' && tempRow!='B' && tempRow!='C' && tempRow!='D' && tempRow!='E' && tempRow!='F')\par
+\tab\tab\tab\tab\tab cout<<"Wrong ROW letter!!!"<<endl;\par
+\tab\tab\tab\tab\cf1 else\cf0  \cf1 if\cf0 (empCol<1 || tempCol>13)\par
+\tab\tab\tab\tab\tab cout<<"Wrong COLUMN number!!!"<<endl;\par
+\tab\tab\tab\}\cf2 //WHILE\par
+\cf0\tab\tab\cf1 else\cf0  \cf1 if\cf0 (section='B')\par
+\tab\tab\{\par
+\tab\tab\tab\cf1 do\par
+\cf0\tab\tab\tab\{\par
+\tab\tab\tab\tab cout<<"Economic Class"<<endl<<endl;\par
+\tab\tab\tab\tab cout<<"A.Smoking area/nB.Non-Smoking area"<<endl;\par
+\tab\tab\tab\tab cin>>section;\par
+\tab\tab\tab\tab section=toupper(section);\par
+\tab\tab\tab\tab\cf1 if\cf0 (section!='A' || section!='B')\par
+\tab\tab\tab\tab\tab cout<<"Wrong option!!!"<<endl;\par
+\tab\tab\tab\}\cf1 while\cf0 (section!='A' || section!='B')\cf2 //WHILE\par
+\cf0\tab\tab\tab\tab\cf1 if\cf0 (section='A')\par
+\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab\cf1 do\cf0\{\par
+\tab\tab\tab\tab\tab\tab cout<<"Economic Class"<<endl;\par
+\tab\tab\tab\tab\tab\tab cout<<"Smoking Area"<<endl;\par
+\tab\tab\tab\tab\tab\tab cout<<"Select from ROWS 8 to 13 "<<"COLUMNS A to F"<<endl;\par
+\tab\tab\tab\tab\tab\tab cout<<"Enter your desired seat ROW letter and COLUMN number: ";\par
+\tab\tab\tab\tab\tab\tab cin>>tempRow>>tempCol;\par
+\tab\tab\tab\tab\tab\tab tempRow=toupper(tempRow);\par
+\tab\tab\tab\tab\tab\tab\cf1 if\cf0 (tempRow!='A' && tempRow!='B' && tempRow!='C' && tempRow!='D' && tempRow!='E' && tempRow!='F')\par
+\tab\tab\tab\tab\tab\tab\tab cout<<"Wrong ROW letter!!!"<<endl;\par
+\tab\tab\tab\tab\tab\tab\cf1 else\cf0  \cf1 if\cf0 (empCol<1 || tempCol>13)\par
+\tab\tab\tab\tab\tab\tab\tab cout<<"Wrong COLUMN number!!!"<<endl;\par
+\tab\tab\tab\tab\tab\}\cf1 while\cf0 ((tempRow!='A' && tempRow!='B' && tempRow!='C' && tempRow!='D' && tempRow!='E' && tempRow!='F') ||\par
+\tab\tab\tab\tab\tab\tab (tempCol<1 || tempCol>13))\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\cf1 else\par
+\cf0\tab\tab\tab\tab\{\par
+\tab\tab\tab\tab\tab cout<<"Economic Class"<<endl;\par
+\tab\tab\tab\tab\tab cout<<"Non-Smoking Area"<<endl;\par
+\tab\tab\tab\tab\tab cout<<"Select from ROWS 3 to 7 "<<"COLUMNS A to F"<<endl;\par
+\tab\tab\tab\tab\tab cout<<"Enter your desired seat ROW letter and COLUMN number: ";\par
+\tab\tab\tab\tab\tab\tab cin>>tempRow>>tempCol;\par
+\tab\tab\tab\tab\tab\tab tempRow=toupper(tempRow);\par
+\tab\tab\tab\tab\tab\tab\cf1 if\cf0 (tempRow!='A' && tempRow!='B' && tempRow!='C' && tempRow!='D' && tempRow!='E' && tempRow!='F')\par
+\tab\tab\tab\tab\tab\tab\tab cout<<"Wrong ROW letter!!!"<<endl;\par
+\tab\tab\tab\tab\tab\tab\cf1 else\cf0  \cf1 if\cf0 (empCol<1 || tempCol>13)\par
+\tab\tab\tab\tab\tab\tab\tab cout<<"Wrong COLUMN number!!!"<<endl;\par
+\par
+\par
+\tab\tab\tab\tab\tab\tab\tab\par
+\tab\tab\tab\tab\par
+\tab\tab\tab\tab\par
+\tab\tab\tab\tab\par
+\tab\tab\tab\tab\par
+\par
+\par
+\par
+\tab\tab\tab\}\cf2 //WHILE\par
+\cf0\tab\tab\}\cf2 //ELSE\par
+\cf0\tab\tab\cf1 else\par
+\cf0\tab\tab\tab cout<<"Wrong option!!!"<endl;\par
+\tab\tab\}\cf2 //IF\par
+\cf0\}\cf2 //\par
+\par
+\par
+\par
+\par
+\par
+\cf0\tab\cf2 /*\par
+\tab string answer;\par
+\tab bool smoke=false, firstClass=false;\par
+\par
+\par
+\par
+\tab cout<<"Seat Reservoir"<<endl<<endl;\par
+\tab cout<<"Would you like a seat in the smoking area? (Y/N): ";\par
+\tab cin>>answer;\par
+\par
+\tab if(answer=="Y" || answer=="y")\par
+\tab\tab smoke=true;\par
+\tab else\par
+\tab\tab smoke=false;\par
+\par
+\tab if(smoke=false)\par
+\tab\{\par
+\tab\tab cout<<"Would you like a seat in First class? (Y/N): ";\par
+\tab\tab cin>>answer;\par
+\tab\}\par
+\par
+\tab if(answer=="Y" || answer=="y")\par
+\tab\tab firstClass=true;\par
+\tab else\par
+\tab\tab firstClass=false;\par
+\par
+\tab if(smoke=true && firstClass*/\par
+\par
+\cf1 void\cf0  cancelReserve(array[][COLS])\par
+\{ \par
+\tab\cf1 int\cf0  row=14, colNum=7;\par
+\tab\cf1 char\cf0  colLetter;\par
+\par
+\tab\cf1 while\cf0 (row<1 || row>13)\par
+\tab\{\par
+\tab\tab cout<<"Enter row number: ";\par
+\tab\tab cin>>row;\par
+\tab\tab\cf1 if\cf0 (row<1 || row>13)\par
+\tab\tab\tab cout<<"Wrong number!"<<endl;\par
+\tab\}\cf2 //WHILE\par
+\cf0\tab\tab\cf1 while\cf0 (colNum<1 ||colNum>6)\par
+\tab\{\par
+\tab\tab cout<<"Enter column letter: ";\par
+\tab\tab cin>>colLetter;\par
+\tab\tab\cf1 switch\cf0 (colLetter)\par
+\tab\tab\tab\cf1 case\cf0  'A':\par
+\tab\tab\tab\tab colNum=1;\par
+\tab\tab\tab\tab\cf1 break\cf0 ;\par
+\tab\tab\tab\cf1 case\cf0  'B':\par
+\tab\tab\tab\tab colNum=2;\par
+\tab\tab\tab\tab\cf1 break\cf0 ;\par
+\tab\tab\tab\cf1 case\cf0  'C':\par
+\tab\tab\tab\tab colNum=3;\par
+\tab\tab\tab\tab\cf1 break\cf0 ;\par
+\tab\tab\tab\cf1 case\cf0  'D':\par
+\tab\tab\tab\tab colNum=4;\par
+\tab\tab\tab\tab\cf1 break\cf0 ;\par
+\tab\tab\tab\cf1 case\cf0  'E':\par
+\tab\tab\tab\tab colNum=5;\par
+\tab\tab\tab\tab\cf1 break\cf0 ;\par
+\tab\tab\tab\cf1 case\cf0  'F':\par
+\tab\tab\tab\tab colNum=6;\par
+\tab\tab\tab\tab\cf1 break\cf0 ;\par
+\tab\tab\tab\cf1 default\cf0 :\par
+\tab\tab\tab\tab cout<<"Wrong column letter!"<<endl;\par
+\tab\tab\tab\tab\cf1 break\cf0 ;\par
+\tab\}\cf2 //WHILE\par
+\cf0\tab array[row][colNum]='*';\par
+\}\cf2 //CANCELRESERVE\par
+\par
+\cf1 void\cf0  showSeats(array[][COLS])\par
+\{\par
+\par
+\par
+\par
+\par
+\par
+\par
+\f1\par
+}
+ 

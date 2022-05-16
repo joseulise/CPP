@@ -1,0 +1,4 @@
+ABC123 Superman Returns# 09/09/2007 150 25
+DEF456 Superman Returns# 09/13/2007 75 12
+GHI789 X-Men: The Last Stand# 09/15/2007 200 28
+JKL985 Batman Begins# 09/22/2007 150 49

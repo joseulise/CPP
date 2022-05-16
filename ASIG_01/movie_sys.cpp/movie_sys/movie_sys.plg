@@ -1,0 +1,25 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: movie_sys - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\JOSEUL~1\LOCALS~1\Temp\RSP167.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/movie_sys.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\0Universidad\UNIVERSIDAD 2007 1er SEM\ESTRUCTURA\ASIG_01\movie_sys.cpp\movie_sys\movie_sys.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\JOSEUL~1\LOCALS~1\Temp\RSP167.tmp" 
+<h3>Output Window</h3>
+Compiling...
+movie_sys.cpp
+
+
+
+<h3>Results</h3>
+movie_sys.obj - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
