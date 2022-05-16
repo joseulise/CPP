@@ -1,0 +1,3 @@
+123 A B B D A C B B C B
+456 A B B D A C B C C B
+789 A A B D A C B D C B
